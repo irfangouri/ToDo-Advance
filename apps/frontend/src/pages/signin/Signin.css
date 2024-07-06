@@ -1,0 +1,87 @@
+body, html {
+  display: table;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.signin-page {
+  display: tabel-cell;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signin-image {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+.form-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 24px 0 0;
+  color: #2d333a;
+}
+
+.form-text {
+  /* root css */
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.error-paragraph {
+  background-color: rgba(255, 0, 0, 0.3);
+  display: flex;
+  justify-content:left;
+  border-radius: 6px;
+  align-items: center;
+  margin: 20px auto 30px auto;
+  padding-left: 20px;
+  width: 400px;
+  height: 50px;
+}
+
+.form-anchor {
+  color: rgb(92, 189, 92);
+  cursor: pointer;
+}
+
+.form-divider-wrapper {
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  border: none;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+  padding: 18px 0 0;
+  justify-content: center;
+  vertical-align: baseline;
+  margin-bottom: 10px
+}
+
+.form-divider-wrapper:before{
+  content: "";
+  border-bottom: 1px solid #c2c8d0;
+  flex: 1 0 auto;
+  height: .5em;
+  margin: 0 10px 0 38%;
+}
+
+.form-divider-wrapper:after {
+  content: "";
+  border-bottom: 1px solid #c2c8d0;
+  flex: 1 0 auto;
+  height: .5em;
+  margin: 0 38% 0 10px;
+}
+
+.auth-icon {
+  margin-right: 10px;
+}

@@ -1,0 +1,17 @@
+.form-button {
+  width: 285px;
+  background-color: rgb(92, 189, 92);
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  height: 40px;
+}
+
+.form-button:focus {
+  outline: none;
+}
+
+.form-button:hover {
+  background-color: rgb(56, 132, 56);
+}

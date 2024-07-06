@@ -1,0 +1,30 @@
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-button {
+  font-family: Söhne, -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 10px;
+  margin: 5px 0;
+  height: 40px;
+  width: 285px;
+  border-radius: 6px;
+  border: 1px solid rgb(172, 170, 170);
+  background-color: white;
+  color: black;
+}
+
+.auth-button:focus {
+  outline: none;
+}
+
+.auth-button:hover {
+  background-color: rgb(190, 187, 187);
+  cursor: pointer;
+}
