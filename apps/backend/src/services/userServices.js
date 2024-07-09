@@ -48,7 +48,7 @@ const loginUser = async (username, password) => {
     };
   }
 
-  const accessToken = getAccessToken(username, password);
+  const accessToken = getAccessToken(userExist._id, username, password);
   return accessToken;
 }
 

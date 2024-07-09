@@ -15,16 +15,25 @@ const comparePassword = async (password, encryptedPassword) => {
   return isPasswordValid;
 }
 
-const getAccessToken = (username, password) => {
+const getAccessToken = (_id, username, password) => {
   const accessToken = jwt.sign(
-    { username, password},
+    { _id, username, password},
     JWT_SECRET_KEY
   );
   return accessToken;
+}
+
+const decodeAccessToken = (accessToken) => {
+  const userInfo = jwt.verify(
+    accessToken,
+    JWT_SECRET_KEY,
+  );
+  return userInfo;
 }
 
 module.exports = {
   encryptPassword,
   comparePassword,
   getAccessToken,
+  decodeAccessToken,
 };
