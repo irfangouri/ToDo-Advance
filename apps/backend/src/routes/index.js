@@ -1,10 +1,19 @@
 const express = require('express');
 const userRoutes = require('./userRoutes.js');
 const todoRoutes = require('./todoRoutes.js');
+const authMiddleware = require('../middlewares/authMiddleware.js');
 
-const routes = express();
+const router = express();
 
-routes.use('/user', userRoutes);
-routes.use('/user/:userId/todo', todoRoutes);
+router.use(
+  '/user',
+  userRoutes
+);
 
-module.exports = routes;
+router.use(
+  '/user/:userId/todo',
+  authMiddleware,
+  todoRoutes
+);
+
+module.exports = router;

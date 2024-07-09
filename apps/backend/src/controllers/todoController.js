@@ -1,39 +1,86 @@
+const todoService = require('../services/todoServices.js');
 
-
-const createTodo = (req, res, next) => {
+const createTodo = async (req, res, next) => {
   try {
+    const { userId } = req.params;
+    const data = req.body;
 
+    const response = await todoService.createTodo(userId, data);
+
+    if (response?.error) {
+      return res.status(403).json({
+        Error: response.error,
+      });
+    }
+
+    res.status(201).json({
+      todo: response,
+    });
+  } catch (err) {
+    console.error('Error: ', err);
+    next(err);
+  }
+}
+
+const deleteTodo = async (req, res, next) => {
+  try {
+    const { todoId } = req.params;
+
+    const todo = await todoService.deleteTodo(todoId);
+    if (!todo) {
+      return res.status(404).json({
+        Error: `Todo with id ${todoId} not found`,
+      });
+    }
+
+    res.status(204).json();
   } catch (err) {
     next(err);
   }
 }
 
-const deleteTodo = (req, res, next) => {
+const getAllTodos = async (req, res, next) => {
   try {
+    const { userId } = req.params;
 
+    const todos = await todoService.getAllTodos(userId);
+    if (!todos) {
+      return res.status(404).json({
+        Error: `Something went wrong, Please try again later`,
+      });
+    }
+
+    res.status(200).json({
+      todos
+    });
   } catch (err) {
     next(err);
   }
 }
 
-const getAllTodos = (req, res, next) => {
+const getTodo = async (req, res, next) => {
   try {
+    const { todoId } = req.params;
 
+    const todo = await todoService.getTodo(todoId);
+    if (!todo) {
+      return res.status(404).json({
+        Error: `Todo with id ${todoId} not found.`,
+      });
+    }
+
+    res.status(200).json({
+      todo,
+    });
   } catch (err) {
     next(err);
   }
 }
 
-const getTodo = (req, res, next) => {
+const updateTodo = async (req, res, next) => {
   try {
+    const { title, description, isCompleted } = req.body;
 
-  } catch (err) {
-    next(err);
-  }
-}
-
-const updateTodo = (req, res, next) => {
-  try {
 
   } catch (err) {
     next(err);
