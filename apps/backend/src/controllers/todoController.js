@@ -17,7 +17,6 @@ const createTodo = async (req, res, next) => {
       todo: response,
     });
   } catch (err) {
-    console.error('Error: ', err);
     next(err);
   }
 }
@@ -79,9 +78,39 @@ const getTodo = async (req, res, next) => {
 
 const updateTodo = async (req, res, next) => {
   try {
-    const { title, description, isCompleted } = req.body;
+    const { todoId } = req.params;
+    const data = req.body;
 
+    const updatedTodo = await todoService.updateTodo(todoId, data);
+    if (!updatedTodo) {
+      return res.status(404).json({
+        Error: `Todo with id ${todoId} not found`,
+      });
+    }
 
+    console.log('Updated todo: ', updatedTodo);
+    res.status(200).json({
+      todo: updatedTodo,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+const updateIsComplete = async (req, res, next) => {
+  try {
+    const { todoId } = req.params;
+
+    const todo = await todoService.updateIsComplete(todoId);
+    if (!todo) {
+      return res.status(404).json({
+        Error: `Todo with id ${todoId} not found`,
+      });
+    }
+
+    res.status(200).json({
+      todo,
+    });
   } catch (err) {
     next(err);
   }
@@ -93,4 +122,5 @@ module.exports = {
   getTodo,
   getAllTodos,
   updateTodo,
+  updateIsComplete
 }

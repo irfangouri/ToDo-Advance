@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Todo = require('../models/todoModel.js');
 const todoValidation = require('../validations/todoValidation.js');
 
@@ -39,11 +40,8 @@ const deleteTodo = async (todoId) => {
 }
 
 const getAllTodos = async (userId) => {
-  const todos = await Todo.find(
-    { userId },
-    { }
-  );
-
+  const todos = await Todo.find({ userId });
+  console.log('Todos: ', todos);
   return todos;
 }
 
@@ -52,8 +50,40 @@ const getTodo = async (todoId) => {
   return todo;
 }
 
-const updateTodo = async () => {
+const updateTodo = async (todoId, data) => {
+  const todo = await getTodo(todoId);
+  const { title, description } = data;
 
+  if (!todo) {
+    return null;
+  }
+
+  const updatedTodo = await Todo.findOneAndUpdate(
+    { _id: todoId },
+    { $set: {
+      title: title ? title : todo.title,
+      description: description ? description : todo.description,
+    }},
+    { new: true },
+  );
+
+  return updatedTodo;
+}
+
+const updateIsComplete = async (todoId) => {
+  const todo = await getTodo(todoId);
+
+  if (!todo) {
+    return null;
+  }
+
+  const updatedTodo = await Todo.findByIdAndUpdate(
+    { _id: todoId },
+    { isCompleted: !todo.isCompleted },
+    { new: true },
+  );
+
+  return updatedTodo;
 }
 
 module.exports = {
@@ -62,4 +92,5 @@ module.exports = {
   getTodo,
   getAllTodos,
   updateTodo,
+  updateIsComplete,
 }

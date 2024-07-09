@@ -7,6 +7,7 @@ todo.post('/', todoController.createTodo);
 todo.get('/:todoId', todoController.getTodo);
 todo.get('/', todoController.getAllTodos);
 todo.patch('/:todoId', todoController.updateTodo);
+todo.patch('/:todoId/complete', todoController.updateIsComplete);
 todo.delete('/:todoId', todoController.deleteTodo);
 
 module.exports = todo;
