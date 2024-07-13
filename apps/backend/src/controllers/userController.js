@@ -41,6 +41,7 @@ const loginUser = async (req, res, next) => {
     }
 
     res.status(200).json({
+      'id': response.id,
       'accessToken': response,
     });
   } catch (err) {

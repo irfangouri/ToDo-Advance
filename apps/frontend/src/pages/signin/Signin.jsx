@@ -20,12 +20,13 @@ function Signin() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('access-token');
+    const userId = localStorage.getItem('userId');
     if (!accessToken) {
       navigate('/signin');
     } else {
-      navigate('/user');
+      navigate(`/user/${userId}`);
     }
-  }, [navigate]);
+  }, []);
 
   const validateForm = () => {
     if (!username || !password) {
@@ -47,10 +48,12 @@ function Signin() {
       const requestHeader = { headers: { 'Content-Type': 'application/json' }};
       const user = await axios.post(requestUrl, requestBody, requestHeader);
       localStorage.setItem('access-token', user.data.accessToken);
+      localStorage.setItem('userId', user.data.id);
       setTimeout(() => {
         localStorage.removeItem('access-token');
+        localStorage.removeItem('userId');
       }, 24 * 60 * 60 * 1000);
-      navigate('/user');
+      navigate(`/user/${user.id}`);
     } catch (err) {
       setError('Error occurred while signing up. Please try again.');
       console.log('Error: ', err);

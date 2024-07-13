@@ -1,0 +1,43 @@
+.todo-input-container {
+  position: fixed;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+}
+
+.todo-input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todo-input-title {
+  flex: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid rgb(172, 170, 170);
+  border-radius: 6px;
+}
+
+.todo-input-date {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid rgb(172, 170, 170);
+  border-radius: 6px;
+}
+
+.todo-input-description {
+  flex: 2;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid rgb(172, 170, 170);
+  border-radius: 6px;
+}
+
+.todo-input-button {
+  flex-shrink: 0;
+  padding: 10px;
+  border: 1px solid rgb(172, 170, 170);
+  border-radius: 6px;
+}

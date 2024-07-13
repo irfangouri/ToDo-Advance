@@ -18,7 +18,8 @@ const comparePassword = async (password, encryptedPassword) => {
 const getAccessToken = (_id, username, password) => {
   const accessToken = jwt.sign(
     { _id, username, password},
-    JWT_SECRET_KEY
+    JWT_SECRET_KEY,
+    { expiresIn: '24h' },
   );
   return accessToken;
 }

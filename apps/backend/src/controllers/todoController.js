@@ -88,7 +88,6 @@ const updateTodo = async (req, res, next) => {
       });
     }
 
-    console.log('Updated todo: ', updatedTodo);
     res.status(200).json({
       todo: updatedTodo,
     });
