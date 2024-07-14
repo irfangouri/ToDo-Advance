@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/layout/navbar/Navbar.jsx';
 import TodoInput from '../../components/layout/todo-input/TodoInput.jsx';
+import Todo from '../../components/layout/todo/Todo.jsx';
 
 function Landing() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function Landing() {
   return (
     <div>
       <Navbar />
+      <Todo />
       <TodoInput />
     </div>
   );
