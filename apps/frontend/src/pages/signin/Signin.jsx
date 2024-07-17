@@ -47,7 +47,7 @@ function Signin() {
       const requestBody = { username, password };
       const requestHeader = { headers: { 'Content-Type': 'application/json' }};
       const user = await axios.post(requestUrl, requestBody, requestHeader);
-      localStorage.setItem('access-token', user.data.accessToken);
+      localStorage.setItem('access-token', user.data.accessToken.accessToken);
       localStorage.setItem('userId', user.data.id);
       setTimeout(() => {
         localStorage.removeItem('access-token');

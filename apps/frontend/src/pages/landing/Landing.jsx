@@ -26,7 +26,7 @@ function Landing() {
   return (
     <div>
       <Navbar />
-      <Todo />
+      <Todo title={'Irfan'} description={'Go to gym'} dueDate={'2024-08-20'} />
       <TodoInput />
     </div>
   );

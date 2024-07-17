@@ -1,10 +1,12 @@
 import React from 'react';
+import './Todo.css';
 
-function Todo ({  }) {
+function Todo({ title, description, dueDate }) {
   return (
-    <div>
-      <h3>Title</h3>
-      <p>Description</p>
+    <div className="todo-item">
+      <h3 className="todo-title">{title}</h3>
+      <p className="todo-description">{description}</p>
+      <p className="todo-due-date">Due date: {dueDate}</p>
     </div>
   );
 }
