@@ -20,12 +20,13 @@ function Signup() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('access-token');
+    const userId = localStorage.getItem('userId');
     if (!accessToken) {
       navigate('/signup');
     } else {
-      navigate('/user');
+      navigate(`/user/${userId}`);
     }
-  }, [navigate]);
+  }, []);
 
   const validateForm = () => {
     if (!username || !password) {

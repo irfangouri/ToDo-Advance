@@ -49,7 +49,7 @@ const loginUser = async (username, password) => {
   }
 
   const accessToken = getAccessToken(userExist._id, username, password);
-  return accessToken;
+  return { id: userExist._id, accessToken };
 }
 
 module.exports = {

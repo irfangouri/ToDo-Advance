@@ -1,29 +1,33 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/layout/navbar/Navbar.jsx';
+import TodoInput from '../../components/layout/todo-input/TodoInput.jsx';
+import Todo from '../../components/layout/todo/Todo.jsx';
 
 function Landing() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkAcessToken = () => {
-      const accessToken = localStorage.getItem('access-token');
-      if (!accessToken) {
-        navigate('/signup');
-      } else {
-        navigate('/user');
-      }
+  const checkAcessToken = () => {
+    const accessToken = localStorage.getItem('access-token');
+    const userId = localStorage.getItem('userId');
+    if (!accessToken) {
+      navigate('/signup');
+    } else {
+      navigate(`/user/${userId}`);
     }
+  }
 
+  useEffect(() => {
     checkAcessToken();
-
     const interval = setInterval(checkAcessToken, 60 * 60 * 1000);
-
     return () => clearInterval(interval);
-  }, [navigate]);
+  }, []);
 
   return (
     <div>
-      Hello world from landing!!!
+      <Navbar />
+      <Todo title={'Irfan'} description={'Go to gym'} dueDate={'2024-08-20'} />
+      <TodoInput />
     </div>
   );
 }
